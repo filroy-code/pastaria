@@ -1,5 +1,14 @@
 body {
     background-color: rgb(165, 107, 31);
+    display: flex;
+}
+
+.body-content {
+    background-color: black;
+    color: white;
+    padding: 30px;
+    margin-top: 20px;
+    border: solid white 5px;
 }
 
 #main-logo {
@@ -7,6 +16,17 @@ body {
     display: flex;
     width: 250px;
     height: 250px;
+}
+
+.main-section {
+    width: 75%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(165, 107, 31);
+    border: solid rgb(75, 39, 10) 5px;
+    float: right;
 }
 
 header {
@@ -17,23 +37,15 @@ header {
 
 .sidebar {
     float: left;
-    width: 20%;
-    background-color: rgb(165, 107, 31);
-    margin: -7px;
+    width: 19%;
+    background-color: solid rgb(75, 39, 10) 5px;
+    overflow: visible;
 }
 
-.main-section {
-    width: 78%;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgb(165, 107, 31);
-    border: solid rgb(75, 39, 10) 5px;
-    float: right;
-}
 nav {
+    overflow: visible;
     position: sticky;
+    top: 25%;
 }
 .navigation {
     border: solid rgb(75, 39, 10) 5px;
@@ -45,12 +57,63 @@ nav {
     color: whitesmoke;
 }
 
-.spacer {
-    border: dashed rgb(75, 39, 10) 5px;
-}
-
 .navigation:hover {
     background-color: rgb(94, 53, 20);
+}
+
+.navigation:active {
+    background-color: rgb(80, 45, 17);
+}
+
+.menuItem {
+    background-color: black;
+    padding: 10px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    margin-top: 20px;
+    border: solid white 5px;
+    color: white;
+    background-color: black;
+    padding: 5px;
+    text-align: center;
+}
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    padding: 30px 0;
+}
+
+ul {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    border: solid white 1px;
+}
+
+.item {
+    width: 200px;
+    height: 200px;
+    border-radius: 60%;
+    margin-bottom: 1rem;
+}
+
+.spacer {
+    border: dashed rgb(75, 39, 10) 5px;
 }
 
 h1 {
@@ -67,11 +130,47 @@ h2 {
     padding: 10px;
 }
 
-p {
-    font-size: 1.5rem;
+h4 {
+    font-size: 2rem;
+    margin: 1rem 0;
+    text-align: center;
 }
 
-@media screen and (max-width: 600px) {
+h5 {
+    font-size: 1.7rem;
+    margin: 1rem 0;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1230px) {
+    .item {
+        height: 150px;
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .item {
+        height: 120px;
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .item {
+        height: 100px;
+        width: 100px;
+    }
+
+    .menuItem {
+        height: 800px;
+    }
+}
+
+@media screen and (max-width: 735px) {
     h2 {
         font-size: 2rem;
     }
@@ -80,11 +179,26 @@ p {
         flex-direction: column;
     }
 
+    .logo-text {
+        margin-top: -10px;
+    }
+
     header {
         flex-direction: column;
     }
 
     * {
         font-size: 0.7em;
+    }
+
+    ul {
+        flex-direction: column;
+    }
+
+    .item {
+        margin-top: -50px;
+    }
+    .menuItem {
+        height: 550px;
     }
 }
