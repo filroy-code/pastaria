@@ -6,6 +6,10 @@ import PastaTurkey from './images/turkey-bolognaise.jpg';
 import PizzaSpicy from './images/spicy-chicken-pizza.jpg';
 import PizzaBalsamic from './images/balsamic-glaze-pizza.jpg';
 import Hoagie from './images/sausage-and-peppers-19.jpg';
+import Seating from './images/highlight.jpg';
+import Chefs1 from './images/marmotte-mountain-chef.jpg';
+import Chefs2 from './images/chefs-kitchen.jpg';
+
 
 
 //navigation pane
@@ -68,6 +72,126 @@ mottoPara.innerHTML = 'Every dish at Pastaria is crafted with love and utmost at
 bodyContent.appendChild(mottoText)
 bodyContent.appendChild(mottoPara)
 
+//image carousel
+
+const carousel = document.createElement('section')
+carousel.classList.add('image-carousel')
+
+const carouselContainer = document.createElement('div')
+carouselContainer.classList.add('container')
+
+carousel.appendChild(carouselContainer)
+
+class Picture {
+    constructor(source) {
+    this.source = source}
+
+    info() {
+        console.log(this.source)
+    }
+}
+
+const gallery = document.createElement('div')
+gallery.setAttribute('id', 'gallery')
+carouselContainer.appendChild(gallery)
+
+let first = new Picture(Seating)
+let second = new Picture(Chefs1)
+let third = new Picture(Chefs2)
+
+let pictures = [first, second, third]
+
+let i = 0;
+let x2 = 0;
+
+pictures.forEach((picture) => {
+    picture = document.createElement('img')
+    picture.setAttribute('src', `${pictures[i].source}`)
+    picture.classList.add('gallery')
+    gallery.appendChild(picture)
+    i++
+})
+/*
+const leftButton = document.createElement('button')
+const rightButton = document.createElement('button')
+
+leftButton.classList.add('leftnavButton')
+rightButton.classList.add('rightnavButton')
+leftButton.classList.add('navButton')
+rightButton.classList.add('navButton')
+leftButton.innerHTML = "←"
+rightButton.innerHTML = "→"
+
+carouselContainer.appendChild(leftButton)
+carouselContainer.appendChild(rightButton)
+const galleryHUD = document.createElement('div')
+galleryHUD.classList.add('galleryHUD')
+
+let ticker = 0;
+pictures.forEach((picture) => {
+    picture = document.createElement('button')
+    picture.classList.add('hudButton')
+    picture.setAttribute('data-value', `${ticker}`)
+    galleryHUD.appendChild(picture)
+    ticker++;
+})
+*/
+const hudBanner = document.createElement('div')
+hudBanner.classList.add('hudBanner')
+carouselContainer.appendChild(hudBanner)
+
+//hudBanner.appendChild(galleryHUD)
+
+const hud = document.querySelectorAll('.hudButton')
+
+hud.forEach((button) => {
+    button.addEventListener('click', (e) => {
+    x2 = +button.dataset.value;
+    slide(x2) })
+})
+/*
+leftButton.addEventListener('click', (e) => {
+    if (x2 === 0) {x2 = (pictures.length - 1)} else {x2--};
+    slide(x2)
+})
+
+rightButton.addEventListener('click', (e) => {
+    if (x2 === (pictures.length - 1)) {x2 = 0} else {x2++;};
+    slide(x2);
+})
+
+function updateHUD(x2) {
+    hud.forEach((bubble) => {
+        bubble.classList.remove('activeBubble')
+    })
+   // hud[x2].classList.add('activeBubble')
+}
+*/
+function slide(x2) {
+    let galleryPosition = (x2) * (-100);
+    gallery.style.left = `${galleryPosition}%`;
+   // updateHUD(x2)
+}
+
+// updateHUD(x2)
+slide(x2)
+
+let slideTimer = setInterval(function(){
+    if (x2 === (pictures.length - 1)) {x2 = 0} else {x2++;};
+    slide(x2)
+}, 5000);
+
+const allButtons = document.querySelectorAll('button')
+allButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        clearInterval(slideTimer);
+        slideTimer = setInterval(function(){
+            if (x2 === (pictures.length - 1)) {x2 = 0} else {x2++;};
+            slide(x2)
+        }, 5000);
+    })
+})
+
 //creating main section
 const mainSection = document.createElement('div')
 mainSection.classList.add('main-section')
@@ -79,6 +203,7 @@ document.body.appendChild(mainSection)
 //adding homepage to document
 function home() {
     mainSection.appendChild(bodyContent)
+    mainSection.appendChild(carousel)
 }
 
 function menuCreate() {
@@ -205,5 +330,13 @@ homeButton.addEventListener('click', (e) => {
 
 menuButton.addEventListener('click', (e) => {
     mainSection.removeChild(bodyContent)
+    mainSection.removeChild(carousel)
     menuCreate()
+})
+
+const headerButton = document.querySelector('header')
+
+headerButton.addEventListener('click', (e) => {
+    mainSection.removeChild(menu)
+    home();
 })

@@ -1,3 +1,8 @@
+:root {
+    --image-width: 60vw;
+    --image-height: ;
+}
+
 body {
     background-color: rgb(165, 107, 31);
     display: flex;
@@ -14,8 +19,9 @@ body {
 #main-logo {
     float: left;
     display: flex;
-    width: 250px;
-    height: 250px;
+    width: auto;
+    height: 90%;
+    transition: height 0.3s;
 }
 
 .main-section {
@@ -29,36 +35,202 @@ body {
     float: right;
 }
 
+/* start of gallery */
+
+.container {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+    width: var(--image-width);
+    overflow: hidden;
+}
+
+.displayImage {
+    display: flex;
+    right: 0%;
+    transition: right 1s;
+}
+
+.image-carousel {
+    display: flex;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    height: calc(50vh + 4rem);
+    border: solid white 5px;
+}
+
+#gallery {
+    display: flex;
+    float:left;
+    position: absolute;
+    transition: left 0.7s;
+}
+
+#gallery > img {
+    display: flex;
+    float:left;
+    background-color: black;
+    width: var(--image-width);
+    display: block;
+    transition: left 0.7s;
+    position: relative;
+}
+
+.buttonContainer {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftnavButton {
+    position: absolute;
+    right: 80%;
+}
+
+.navButton {
+    position: absolute;
+    top: 50%;
+    height: 3rem;
+    width: 3rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    font-size: 2rem;
+    align-items: center;
+    color: white;
+    border: none;
+}
+
+.hudBanner {
+    position: absolute;
+    bottom: 0px;
+    height: 15%;
+    background-color: rgba(0, 0, 0, 0.61);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hudButton {
+    float: left;
+    height: 2rem;
+    width: 2rem;
+    background: rgba(99, 97, 97, 0.7);
+    border-radius: 50%;
+    border: none;
+}
+
+.hudButton:hover {
+    background: rgba(85, 83, 83, 0.7);
+}
+
+.hudButton:active {
+    background: rgba(99, 97, 97, 0.952);
+}
+
+.activeBubble {
+    background: rgba(165, 107, 31, 0.664);
+}
+
+.activeBubble:hover {
+    background: rgba(165, 107, 31, 0.664);
+}
+
+.galleryHUD {
+    display: flex;
+    gap: 20px;
+    justify-self: center;
+    align-self: center;
+}
+
+.navButton:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.navButton:active {
+    background: rgba(0, 0, 0, 0.986);
+}
+
+.rightnavButton {
+    left: 80%;
+}
+
+.galleryStatus {
+    position: absolute;
+    left: 40%;
+    display: flex;
+    font-size: 70px;
+    justify-content: center;
+    align-items: center;
+    top: 0%;
+}
+
+/* end of gallery */
+
 header {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 35vh;
+    transform: scale(0.9);
+    transition: transform 0.3s;
+    overflow: hidden;
+}
+
+header:hover {
+    transform: scale(0.98);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+header:active {
+    transform: scale(1);
+    transition: transform 0.1s;
 }
 
 .sidebar {
     float: left;
-    width: 19%;
-    background-color: solid rgb(75, 39, 10) 5px;
+    width: 19vw;
+    /* background-color: rgb(75, 39, 10); */
     overflow: visible;
 }
 
 nav {
     overflow: visible;
     position: sticky;
-    top: 25%;
+    top: 30%;
 }
 .navigation {
     border: solid rgb(75, 39, 10) 5px;
     background-color: rgb(82, 46, 17);
-    padding: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: whitesmoke;
+    width: 90%;
+    height: 4rem;
+    position: relative;
 }
 
 .navigation:hover {
     background-color: rgb(94, 53, 20);
+    transition: background-color 0.45s;
+    cursor: pointer;
+}
+
+.navigation > h2 {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+.navigation > h2:hover {
+    font-size: 3rem;
+    transition: font-size 0.3s;
 }
 
 .navigation:active {
@@ -73,6 +245,12 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.menuItem:hover {
+    background-color: rgb(31, 30, 30);
+    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
 .menu {
@@ -127,7 +305,6 @@ h2 {
     font-family: 'Londrina Outline', sans-serif;
     font-weight: 600;
     font-size: 2.5rem;
-    padding: 10px;
 }
 
 h4 {
@@ -200,5 +377,9 @@ p {
     }
     .menuItem {
         height: 550px;
+    }
+
+    .image-carousel {
+        height: calc(30vh + 4rem);
     }
 }
