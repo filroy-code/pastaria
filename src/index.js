@@ -10,7 +10,7 @@ import Seating from './images/highlight.jpg';
 import Chefs1 from './images/marmotte-mountain-chef.jpg';
 import Chefs2 from './images/chefs-kitchen.jpg';
 
-
+let activeTab = 0;
 
 //navigation pane
 const sidebar = document.createElement('section')
@@ -202,12 +202,19 @@ document.body.appendChild(mainSection)
 
 //adding homepage to document
 function home() {
+    activeTab = 0;
     mainSection.appendChild(bodyContent)
     mainSection.appendChild(carousel)
 }
 
 function menuCreate() {
+    activeTab = 1;
     mainSection.appendChild(menu)
+}
+
+function contactCreate() {
+    activeTab = 2;
+    mainSection.appendChild(contactSection)
 }
 
 home();
@@ -322,21 +329,109 @@ menuArray.forEach((item) => {
     x++
 })
 
+//creating contact section
+const contactSection = document.createElement('section')
+contactSection.classList.add('contact')
+
+const contactHeading = document.createElement('h2')
+contactHeading.innerHTML = "Contact Us"
+
+const ourContact = document.createElement('address')
+ourContact.classList.add('ourContact')
+const emailAddress = document.createElement('p')
+emailAddress.innerHTML = "inquiries@pastaria.com"
+const phoneNumber = document.createElement('p')
+phoneNumber.innerHTML = "(555)-555-5555"
+const address = document.createElement('p')
+address.innerHTML = "123 Fake Street, Toronto, ON, Canada"
+
+ourContact.appendChild(emailAddress)
+ourContact.appendChild(phoneNumber)
+ourContact.appendChild(address)
+
+const customerForm = document.createElement('form')
+customerForm.setAttribute('action', 'placeholder') //send the form to 'placeholder'
+customerForm.setAttribute('method', 'post')
+
+const nameInputLabel = document.createElement('label')
+nameInputLabel.setAttribute('for', 'yourName')
+nameInputLabel.innerHTML = "Your Name:   "
+const nameInput = document.createElement('input')
+nameInput.setAttribute('type', 'text')
+nameInput.setAttribute('id', 'yourName')
+nameInput.setAttribute('placeholder', 'e.g. John Smith')
+
+const emailInputLabel = document.createElement('label')
+emailInputLabel.setAttribute('for', 'yourName')
+emailInputLabel.innerHTML = "Email Address:   "
+const emailInput = document.createElement('input')
+emailInput.setAttribute('type', 'email')
+emailInput.setAttribute('id', 'email')
+emailInput.setAttribute('placeholder', 'example@email.com')
+
+const inquiryInputLabel = document.createElement('label')
+inquiryInputLabel.setAttribute('for', 'inquiry')
+inquiryInputLabel.innerHTML = "Please tell us how we can assist you:   "
+const inquiryInput = document.createElement('textarea')
+inquiryInput.setAttribute('rows', '10')
+inquiryInput.setAttribute('cols', '60')
+inquiryInput.setAttribute('id', 'inquiry')
+
+const submitButton = document.createElement('button')
+submitButton.setAttribute('type', 'submit')
+submitButton.innerHTML = "Submit"
+
+const lineBreak = document.createElement('br')
+const lineBreak2 = document.createElement('br')
+const lineBreak3 = document.createElement('br')
+const lineBreak4 = document.createElement('br')
+
+customerForm.appendChild(nameInputLabel)
+customerForm.appendChild(nameInput)
+customerForm.appendChild(emailInputLabel)
+customerForm.appendChild(emailInput)
+customerForm.appendChild(lineBreak)
+customerForm.appendChild(lineBreak2)
+customerForm.appendChild(inquiryInputLabel)
+customerForm.appendChild(inquiryInput)
+customerForm.appendChild(lineBreak3)
+customerForm.appendChild(lineBreak4)
+customerForm.appendChild(submitButton)
+
+contactSection.appendChild(contactHeading)
+contactSection.appendChild(ourContact)
+contactSection.appendChild(customerForm)
+
 //sidebar buttons
+
+function removeTab() {
+    switch (activeTab) {
+        case 0: mainSection.removeChild(bodyContent);
+            mainSection.removeChild(carousel);
+            break
+        case 1: mainSection.removeChild(menu);
+            break;
+        case 2: mainSection.removeChild(contactSection);
+            break}
+}
 homeButton.addEventListener('click', (e) => {
-    mainSection.removeChild(menu)
+    removeTab()
     home();
 })
 
 menuButton.addEventListener('click', (e) => {
-    mainSection.removeChild(bodyContent)
-    mainSection.removeChild(carousel)
+    removeTab()
     menuCreate()
+})
+
+contactButton.addEventListener('click', (e) => {
+    removeTab()
+    contactCreate()
 })
 
 const headerButton = document.querySelector('header')
 
 headerButton.addEventListener('click', (e) => {
-    mainSection.removeChild(menu)
+    removeTab()
     home();
 })
