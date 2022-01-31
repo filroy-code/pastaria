@@ -5,6 +5,10 @@
 
 body {
     background-color: rgb(165, 107, 31);
+    background-image: url(./images/spoon.png);
+    background-size: 75px;
+    background-repeat: repeat;
+    background-position: top left;
     display: flex;
 }
 
@@ -253,12 +257,21 @@ nav {
     width: 90%;
     height: 4rem;
     position: relative;
+    transform: scale(0.95);
+    transition: transform 0.3s;
 }
 
 .navigation:hover {
     background-color: rgb(94, 53, 20);
     transition: background-color 0.45s;
     cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.3s;
+}
+
+.navigation:active {
+    transform: scale(1);
+    transition: transform 0.1s;
 }
 
 .navigation > h2 {
@@ -267,12 +280,12 @@ nav {
     margin: 0;
     user-select: none;
 }
-
+/*
 .navigation > h2:hover {
     font-size: 3rem;
     transition: font-size 0.3s;
 }
-
+*/
 .navigation:active {
     background-color: rgb(80, 45, 17);
 }
