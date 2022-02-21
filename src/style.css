@@ -31,7 +31,7 @@ body {
 .ourContact {
     border: 1px dotted whitesmoke;
     padding: 5px;
-    max-width: 586px;
+    max-width: 584px;
     margin: 2.5rem 0 1.5rem;
 }
 
@@ -63,7 +63,7 @@ form > button {
     float: left;
     display: flex;
     width: auto;
-    height: 90%;
+    height: 25vh;
     transition: height 0.3s;
 }
 
@@ -218,7 +218,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 35vh;
     transform: scale(0.9);
     transition: transform 0.3s;
     overflow: hidden;
