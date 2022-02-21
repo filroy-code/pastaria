@@ -135,10 +135,11 @@ pictures.forEach((picture) => {
     galleryHUD.appendChild(picture)
     ticker++;
 })
-*/
+
 const hudBanner = document.createElement('div')
 hudBanner.classList.add('hudBanner')
 carouselContainer.appendChild(hudBanner)
+*/
 
 //hudBanner.appendChild(galleryHUD)
 
@@ -350,7 +351,7 @@ ourContact.appendChild(phoneNumber)
 ourContact.appendChild(address)
 
 const customerForm = document.createElement('form')
-customerForm.setAttribute('action', 'placeholder') //send the form to 'placeholder'
+//customerForm.setAttribute('action', 'placeholder') //send the form to 'placeholder'
 customerForm.setAttribute('method', 'post')
 
 const nameInputLabel = document.createElement('label')
