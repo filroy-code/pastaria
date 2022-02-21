@@ -1,4 +1,17 @@
 const path = require('path');
+const { merge } = require('webpack-merge');
+const productionConfig = merge([
+  {
+    output: {
+
+      publicPath: "/",
+
+      publicPath: "/pastaria/",
+
+    },
+  },
+]);
+
 
 module.exports = {
   mode: 'development',
