@@ -352,7 +352,7 @@ ourContact.appendChild(address)
 
 const customerForm = document.createElement('form')
 //customerForm.setAttribute('action', 'placeholder') //send the form to 'placeholder'
-customerForm.setAttribute('method', 'post')
+//customerForm.setAttribute('method', 'post')
 
 const nameInputLabel = document.createElement('label')
 nameInputLabel.setAttribute('for', 'yourName')
